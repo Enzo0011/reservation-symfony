@@ -1,0 +1,23 @@
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 16px; background-color: white; border-bottom: 2px solid #4F46E5;">
+    <!-- Lien "Accueil" -->
+    <a href="{{ url('app_default') }}" style="font-size: 24px; font-weight: bold; text-decoration: none; color: black;">
+        Accueil
+    </a>
+    
+    <!-- Menu de navigation -->
+    <div style="display: flex; gap: 16px;">
+        <a href="{{ url('app_default') }}" style="text-decoration: none; color: gray; font-size: 14px; font-weight: bold;">Home</a>
+        <a href="{{ url('app_service_index') }}" style="text-decoration: none; color: gray; font-size: 14px; font-weight: bold;">Services</a>
+    </div>
+    
+    <!-- Authentification -->
+    <div style="display: flex; align-items: center;">
+        {% if app.user %}
+            <p style="margin-right: 16px; font-size: 14px; color: gray;">Hello {{ app.user.firstName }}</p>
+            <a href="{{ url('app_logout') }}" style="text-decoration: none; font-size: 14px; color: gray; margin-right: 16px;">Logout</a>
+        {% else %}
+            <a href="{{ url('app_login') }}" style="margin-right: 16px; padding: 8px 16px; background-color: #F3F4F6; color: #1F2937; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 8px;">Sign In</a>
+            <a href="{{ url('app_register') }}" style="padding: 8px 16px; background-color: #4F46E5; color: white; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 8px;">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>

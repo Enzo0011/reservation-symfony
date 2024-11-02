@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Create service{% endblock %}
+{% block body %}
+<div>
+    <div>
+        <div>
+            <h2>Create service</h2>
+        </div>
+        <form method="post">
+            {{ form_start(form) }}
+            <div>
+                {% for field in form %}
+                    <div>
+                        {{ form_row(field) }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <button type="submit">Create</button>
+            </div>
+            {{ form_end(form) }}
+        </form>
+    </div>
+</div>
+{% endblock %}

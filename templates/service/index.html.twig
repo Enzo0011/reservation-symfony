@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+        {% for service in services %}
+            <div>
+                <div>
+                    <h2>{{ service.title }}</h2>
+                    <p>{{ service.description }}</p>
+                    <p><strong>City:</strong> {{ service.city }}</p>
+                    <p><strong>Address:</strong> {{ service.adress }}</p>
+                    <p><strong>Postcode:</strong> {{ service.postcode }}</p>
+                    <p><strong>Duration:</strong> {{ service.duration }} minutes</p>
+                    <p><strong>Categories:</strong>
+                        {% for category in service.category %}
+                            {{ category.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                <div>
+                    <a href="{{ url('app_service_show', {'id': service.id}) }}">See more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

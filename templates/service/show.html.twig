@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ service.title }}{% endblock %}
+
+{% block body %}
+<div>
+    <div>
+        <div>
+            <a href="{{ url('app_service_index') }}">Back to list</a>
+            <br/>
+            <h2>{{ service.title }}</h2>
+            <p>{{ service.description }}</p>
+            <p><strong>City:</strong> {{ service.city }}</p>
+            <p><strong>Address:</strong> {{ service.adress }}</p>
+            <p><strong>Postcode:</strong> {{ service.postcode }}</p>
+            <p><strong>Duration:</strong> {{ service.duration }} minutes</p>
+            <p><strong>Categories:</strong>
+                {% for category in service.category %}
+                    {{ category.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+
+        <div>
+            {% if form_errors(form) %}
+                <div role="alert">
+                    <strong>Error!</strong>
+                    <span>{{ form_errors(form) }}</span>
+                </div>
+            {% endif %}
+            <h2>Book this service</h2>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <br/>
+            <button type="submit">Book Now</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
